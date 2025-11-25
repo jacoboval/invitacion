@@ -1,0 +1,42 @@
+<!-- lista de invitados-->
+<button id="cargarlista">Ver Lista de invitados</button>
+<div id="resultadolista"></div>
+
+
+<!-- lista de invitados cofirmados-->
+<button id="cargar">Ver invitados</button>
+<div id="resultado"></div>
+
+<script>
+    document.getElementById("cargarlista").addEventListener("click", async () => {
+        const resp = await fetch("http://127.0.0.1:8083/rsvp/listarInvitados");
+        const data = await resp.json();
+
+        let html = "<h2>Lista de invitados</h2>";
+        html += "<ul>";
+
+        data.forEach(inv => {
+            html += `<li>${inv.nombre} - Acompañantes: ${inv.acompanantes} - Token:${inv.token}</li>`;
+        });
+
+        html += "</ul>";
+        document.getElementById("resultadolista").innerHTML = html;
+    });
+</script>
+<script>
+    document.getElementById("cargar").addEventListener("click", async () => {
+        const resp = await fetch("http://127.0.0.1:8083/rsvp/listar");
+        const data = await resp.json();
+
+        let html = "<h2>Lista de invitados confirmados</h2>";
+        html += "<ul>";
+
+        data.forEach(inv => {
+            html += `<li>${inv.nombre} - ${inv.asistencia} - Acompañantes: ${inv.acompanantes}</li>`;
+        });
+
+        html += "</ul>";
+        document.getElementById("resultado").innerHTML = html;
+    });
+</script>
+

@@ -1,0 +1,47 @@
+package com.javasystems.invitacion.controller;
+
+import com.javasystems.invitacion.model.Invitado;
+import com.javasystems.invitacion.model.listaInvitados;
+import com.javasystems.invitacion.repository.listaInvitadosRepository;
+import com.javasystems.invitacion.service.listaInvitadosService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+ @RequestMapping("/rsvp")
+@CrossOrigin(origins = "*")
+public class listaInvitadosController {
+
+    @Autowired
+    private listaInvitadosService listaInvitadosService;
+    @Autowired
+    private listaInvitadosRepository listaInvitadosRepository;
+
+    @GetMapping("/listarInvitados")
+    public ResponseEntity<List<listaInvitados>>listarInvitados(){
+        List <listaInvitados> listaInvitados = listaInvitadosService.listar();
+        return ResponseEntity.ok(listaInvitados);
+    }
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<listaInvitados> ObtenerPorId(@PathVariable Long id) {
+        return listaInvitadosService.buscarInvitado(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+    /*
+    @GetMapping("/vista/{token}")
+    public ResponseEntity<Invitado> cargarInvitadoPorToken(@PathVariable String token) {
+        Invitado invitado = listaInvitadosRepository.findByToken(token);
+        if (invitado == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(invitado);
+    }
+
+     */
+
+
+}
