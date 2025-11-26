@@ -15,10 +15,17 @@ public class listaInvitadosService {
     @Autowired
     private listaInvitadosRepository listaInvitadosRepository;
 
+
+
+
     public listaInvitados crearInvitado(listaInvitados listaInvitados) {
         listaInvitados.setTokenAcceso(UUID.randomUUID().toString());
         return listaInvitadosRepository.save(listaInvitados);
     }
+    /*
+    public listaInvitados guardar(listaInvitados listainvitados){
+        return listaInvitadosRepository.save(listainvitados);
+    }*/
 
     public List<listaInvitados> listar(){
         return listaInvitadosRepository.findAll();
@@ -27,4 +34,11 @@ public class listaInvitadosService {
     public Optional<listaInvitados> buscarInvitado(Long id){
         return listaInvitadosRepository.findById(id);
     }
-   }
+    /*
+    public Optional<listaInvitados> buscarInvitadoPorToken(Long id){
+        return listaInvitadosRepository.findByToken(id);
+    }
+
+    public listaInvitados findByToken(String token) {
+    }*/
+}

@@ -1,8 +1,10 @@
 package com.javasystems.invitacion.controller;
 
 import com.javasystems.invitacion.model.InvitadoConfirmado;
+import com.javasystems.invitacion.repository.InvitadoConfirmadoRepository;
 import com.javasystems.invitacion.service.InvitadoConfirmadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ public class InvitadoConfirmadoController {
     @Autowired
     //private InvitadoRepository repositorio;
     private InvitadoConfirmadoService invitadoService;
+    @Autowired
+    private InvitadoConfirmadoRepository invitadoConfirmadoRepository;
 
     @PostMapping
     public ResponseEntity<InvitadoConfirmado> crearInvitado(@RequestBody InvitadoConfirmado invitado){
@@ -26,9 +30,9 @@ public class InvitadoConfirmadoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity <List<InvitadoConfirmado>>Invitados() {
-        List<InvitadoConfirmado> invitados= invitadoService.listar();
-        return ResponseEntity.ok(invitados);
+    public ResponseEntity <List<InvitadoConfirmado>>InvitadoConfirmado() {
+        List<InvitadoConfirmado> invitadocpnfirmado= invitadoService.listar();
+        return ResponseEntity.ok(invitadocpnfirmado);
     }
 
 
@@ -54,4 +58,5 @@ public class InvitadoConfirmadoController {
 
         return ResponseEntity.ok(actualizado);
     }
+
 }

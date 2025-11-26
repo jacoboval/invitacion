@@ -4,6 +4,7 @@ import com.javasystems.invitacion.model.listaInvitados;
 import com.javasystems.invitacion.repository.listaInvitadosRepository;
 import com.javasystems.invitacion.service.listaInvitadosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +49,6 @@ public class listaInvitadosController {
         }
         return ResponseEntity.ok(invitado);
     }
-
 
 
 
