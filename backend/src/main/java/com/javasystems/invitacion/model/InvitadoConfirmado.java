@@ -2,9 +2,11 @@ package com.javasystems.invitacion.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
-@Table(name = "invitados")
+@Table(name = "invitadoconfirmado")
 
 public class InvitadoConfirmado {
     @Id
@@ -17,6 +19,7 @@ public class InvitadoConfirmado {
     private String asistencia;
     @Column(columnDefinition = "TEXT")
     private String mensaje;
+     private String tokenAcceso;
 
     public Long getId() {
         return id;
@@ -57,4 +60,8 @@ public class InvitadoConfirmado {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
+
+
+
+
 }

@@ -1,10 +1,13 @@
 package com.javasystems.invitacion.controller;
 
 import com.javasystems.invitacion.model.InvitadoConfirmado;
+import com.javasystems.invitacion.model.listaInvitados;
 import com.javasystems.invitacion.repository.InvitadoConfirmadoRepository;
+import com.javasystems.invitacion.repository.listaInvitadosRepository;
 import com.javasystems.invitacion.service.InvitadoConfirmadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,38 @@ public class InvitadoConfirmadoController {
     private InvitadoConfirmadoService invitadoService;
     @Autowired
     private InvitadoConfirmadoRepository invitadoConfirmadoRepository;
+    @Autowired
+    private listaInvitadosRepository listaInvitadosRepository;
+
+    /*
+    @PostMapping
+    public ResponseEntity<?> confirmar(@RequestBody InvitadoConfirmado invitadoData) {
+
+        //InvitadoConfirmado invitadoDB = listaInvitadosRepository.findByTokenAcceso(invitadoData.getTokenAcceso());
+        listaInvitados invitadoDB = com.javasystems.invitacion.repository.listaInvitadosRepository.findByTokenAcceso(invitadoData.getTokenAcceso());
+
+
+        if (invitadoDB == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Token inválido");
+        }
+
+        if (invitadoDB.isConfirmado()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Ya registraste tu confirmación.");
+        }
+
+        // Guardar la confirmación
+        invitadoDB.setNombre(invitadoData.getNombre());
+        invitadoDB.setAcompanantes(invitadoData.getAcompanantes());
+        invitadoDB.setAsistencia(invitadoData.getAsistencia());
+        invitadoDB.setMensaje(invitadoData.getMensaje());
+        invitadoDB.setConfirmado(true);
+        listaInvitadosRepository.save(invitadoDB);
+
+        return ResponseEntity.ok("Confirmación guardada correctamente.");
+    }
+    */
 
     @PostMapping
     public ResponseEntity<InvitadoConfirmado> crearInvitado(@RequestBody InvitadoConfirmado invitado){
@@ -55,8 +90,6 @@ public class InvitadoConfirmadoController {
         if (actualizado == null) {
             return ResponseEntity.notFound().build();
         }
-
         return ResponseEntity.ok(actualizado);
     }
-
 }

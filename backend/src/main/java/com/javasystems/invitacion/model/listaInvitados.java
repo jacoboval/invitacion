@@ -17,6 +17,15 @@ public class listaInvitados {
     private Integer acompanantes;
 
     private String tokenAcceso;
+    private Boolean confirmado;
+
+    public Boolean getConfirmado() {
+        return confirmado;
+    }
+
+    public void setConfirmado(Boolean confirmado) {
+        this.confirmado = confirmado;
+    }
 
     public String getTokenAcceso() {
         return tokenAcceso;

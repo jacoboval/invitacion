@@ -29,6 +29,7 @@ public class listaInvitadosController {
         return  ResponseEntity.ok(nuevo);
     }
 
+
     @GetMapping("/listarInvitados")
     public ResponseEntity<List<listaInvitados>>listarInvitados(){
         List <listaInvitados> listaInvitados = listaInvitadosService.listar();
@@ -49,6 +50,19 @@ public class listaInvitadosController {
         }
         return ResponseEntity.ok(invitado);
     }
+
+    @GetMapping("/token/{token}")
+    public ResponseEntity<?> obtenerPorToken(@PathVariable String token) {
+        listaInvitados listaInvitados = listaInvitadosRepository.findByTokenAcceso(token);
+
+        if (listaInvitados == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Token inválido");
+        }
+
+        return ResponseEntity.ok(listaInvitados);
+    }
+
 
 
 
