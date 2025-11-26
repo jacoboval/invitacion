@@ -16,15 +16,16 @@ public class listaInvitados {
     private String telefono;
     private Integer acompanantes;
 
-    private String token;
+    private String tokenAcceso;
 
-    public String getToken() {
-        return token;
+    public String getTokenAcceso() {
+        return tokenAcceso;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setTokenAcceso(String tokenAcceso) {
+        this.tokenAcceso = tokenAcceso;
     }
+
 
     public String getTelefono() {
         return telefono;

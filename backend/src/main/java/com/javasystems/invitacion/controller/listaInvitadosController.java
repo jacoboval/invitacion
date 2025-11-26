@@ -24,10 +24,9 @@ public class listaInvitadosController {
     //  crear invitado en la lista de invitados
     @PostMapping
     public ResponseEntity<listaInvitados> agregarAListadeInvitados(@RequestBody listaInvitados listaInvitados){
-        listaInvitados nuevo = listaInvitadosService.guardar(listaInvitados);
+        listaInvitados nuevo = listaInvitadosService.crearInvitado(listaInvitados);
         return  ResponseEntity.ok(nuevo);
     }
-
 
     @GetMapping("/listarInvitados")
     public ResponseEntity<List<listaInvitados>>listarInvitados(){
@@ -43,7 +42,7 @@ public class listaInvitadosController {
 
     @GetMapping("/vista/{token}")
     public ResponseEntity<listaInvitados> cargarInvitadoPorToken(@PathVariable String token) {
-        listaInvitados invitado = listaInvitadosRepository.findByToken(token);
+        listaInvitados invitado = listaInvitadosRepository.findByTokenAcceso(token);
         if (invitado == null) {
             return ResponseEntity.notFound().build();
         }

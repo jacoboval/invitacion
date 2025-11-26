@@ -4,7 +4,7 @@ import com.javasystems.invitacion.model.listaInvitados;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface listaInvitadosRepository extends JpaRepository<listaInvitados, Long> {
-    listaInvitados findByToken(String token);
+    listaInvitados findByTokenAcceso(String token);
 
 /*
     Invitado findByToken(String token);
