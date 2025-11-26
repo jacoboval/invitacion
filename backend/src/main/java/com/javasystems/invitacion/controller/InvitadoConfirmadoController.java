@@ -32,7 +32,6 @@ public class InvitadoConfirmadoController {
     }
 
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id){
         if(invitadoService.eliminar(id)){

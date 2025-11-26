@@ -1,13 +1,12 @@
-const params = new URLSearchParams(window.location.search);
+/*const params = new URLSearchParams(window.location.search);
 const idInvitado = params.get("id");
-
 async function cargarInvitado() {
     if(!idInvitado){
         console.warn("No se envío ID en la URL")
         return;
     }
     try{        
-        const response = await fetch(`http://127.0.0.1:8083/admin/buscar/${idInvitado}`);
+        const response = await fetch(`http://127.0.0.1:8083/rsvp/buscar/${idInvitado}`);
         if(!response.ok){
             console.error("Invitado o encontrado");
             return
@@ -53,7 +52,7 @@ document.getElementById("form-rsvp").addEventListener("submit", async function(e
 
         };
 
-        const response = await fetch("http://127.0.0.1:8083/ic", {
+        const response = await fetch("http://127.0.0.1:8083/rsvp", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -77,4 +76,41 @@ document.getElementById("form-rsvp").addEventListener("submit", async function(e
     btn.disabled = true;
     btn.innerText = "Enviado";
     
+});*/
+const form = document.getElementById("form-rsvp");
+
+let enviado = false;
+
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    if (enviado) return; // <-- evita doble envío
+    enviado = true;
+
+    document.querySelector("button[type='submit']").disabled = true;
+
+    const data = {
+        nombre: document.getElementById("nombre").value,
+        acompanantes: document.getElementById("acompanantes").value,
+        asistencia: document.getElementById("asistencia").value,
+        mensaje: document.getElementById("mensaje").value,
+        token: token
+    };
+
+    const response = await fetch("http://127.0.0.1:8083/ic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        mostrarMensajeBonito();
+    } else {
+        alert("Error al enviar.");
+    }
 });
+
+function mostrarMensajeBonito() {
+    document.getElementById("mensaje-exito").classList.remove("d-none");
+}
+

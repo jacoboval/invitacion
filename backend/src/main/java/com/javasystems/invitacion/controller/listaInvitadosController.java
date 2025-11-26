@@ -1,6 +1,7 @@
 package com.javasystems.invitacion.controller;
 
 import com.javasystems.invitacion.model.listaInvitados;
+import com.javasystems.invitacion.repository.listaInvitadosRepository;
 import com.javasystems.invitacion.service.listaInvitadosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ public class listaInvitadosController {
 
     @Autowired
     private listaInvitadosService listaInvitadosService;
+    @Autowired
+    private listaInvitadosRepository listaInvitadosRepository;
 
 
     //  crear invitado en la lista de invitados
@@ -37,17 +40,17 @@ public class listaInvitadosController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    /*
+
     @GetMapping("/vista/{token}")
-    public ResponseEntity<Invitado> cargarInvitadoPorToken(@PathVariable String token) {
-        Invitado invitado = listaInvitadosRepository.findByToken(token);
+    public ResponseEntity<listaInvitados> cargarInvitadoPorToken(@PathVariable String token) {
+        listaInvitados invitado = listaInvitadosRepository.findByToken(token);
         if (invitado == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(invitado);
     }
 
-     */
+
 
 
 }
