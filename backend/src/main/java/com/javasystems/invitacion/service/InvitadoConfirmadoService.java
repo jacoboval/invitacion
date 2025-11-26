@@ -1,9 +1,7 @@
 package com.javasystems.invitacion.service;
 
-import com.javasystems.invitacion.model.Invitado;
-import com.javasystems.invitacion.model.listaInvitados;
-import com.javasystems.invitacion.repository.InvitadoRepository;
-import com.javasystems.invitacion.repository.listaInvitadosRepository;
+import com.javasystems.invitacion.model.InvitadoConfirmado;
+import com.javasystems.invitacion.repository.InvitadoConfirmadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,24 +9,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class InvitadoService {
+public class InvitadoConfirmadoService {
 
 
     @Autowired
-    private InvitadoRepository invitadoRepository;
+    private InvitadoConfirmadoRepository invitadoRepository;
 
 
-    public Invitado guardar(Invitado invitado){
+    public InvitadoConfirmado guardar(InvitadoConfirmado invitado){
+
         return invitadoRepository.save(invitado);
     }
 
 
-    public List<Invitado> listar() {
+    public List<InvitadoConfirmado> listar() {
         return invitadoRepository.findAll();
     }
 
 
-    public Optional<Invitado> buscarInvitado(Long id){
+    public Optional<InvitadoConfirmado> buscarInvitado(Long id){
         return invitadoRepository.findById(id);
     }
 
@@ -39,8 +38,8 @@ public class InvitadoService {
         }
         return  false;
     }
-    public Invitado actualizar(Long id, Invitado datosActualizados){
-        Invitado invitado = invitadoRepository.findById(id).orElse(null);
+    public InvitadoConfirmado actualizar(Long id, InvitadoConfirmado datosActualizados){
+        InvitadoConfirmado invitado = invitadoRepository.findById(id).orElse(null);
         if(invitado == null){
             return null;
         }

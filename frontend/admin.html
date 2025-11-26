@@ -1,22 +1,22 @@
 <!-- lista de invitados-->
-<button id="cargarlista">Ver Lista de invitados</button>
+<button id="cargarlista">Lista de invitados</button>
 <div id="resultadolista"></div>
 
 
 <!-- lista de invitados cofirmados-->
-<button id="cargar">Ver invitados</button>
+<button id="cargar">Invitados confirmados</button>
 <div id="resultado"></div>
 
 <script>
     document.getElementById("cargarlista").addEventListener("click", async () => {
-        const resp = await fetch("http://127.0.0.1:8083/rsvp/listarInvitados");
+        const resp = await fetch("http://127.0.0.1:8083/admin/listarInvitados");
         const data = await resp.json();
 
         let html = "<h2>Lista de invitados</h2>";
         html += "<ul>";
 
         data.forEach(inv => {
-            html += `<li>${inv.nombre} - Acompañantes: ${inv.acompanantes} - Token:${inv.token}</li>`;
+            html += `<li>${inv.id} - ${inv.nombre} - Acompañantes: ${inv.acompanantes} - telefono:${inv.telefono}</li>`;
         });
 
         html += "</ul>";
@@ -25,7 +25,7 @@
 </script>
 <script>
     document.getElementById("cargar").addEventListener("click", async () => {
-        const resp = await fetch("http://127.0.0.1:8083/rsvp/listar");
+        const resp = await fetch("http://127.0.0.1:8083/ic/listar");
         const data = await resp.json();
 
         let html = "<h2>Lista de invitados confirmados</h2>";

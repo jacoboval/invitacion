@@ -13,6 +13,16 @@ public class listaInvitados {
     private Long id;
 
     private String nombre;
+    private String telefono;
+    private Integer acompanantes;
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public Long getId() {
         return id;
@@ -38,16 +48,4 @@ public class listaInvitados {
         this.acompanantes = acompanantes;
     }
 
-    private Integer acompanantes;
-
-    //private String tokeAcceso;
-
-    /*
-    public String getTokeAcceso() {
-        return tokeAcceso;
-    }
-
-    public void setTokeAcceso(String tokeAcceso) {
-        this.tokeAcceso = tokeAcceso;
-    }*/
 }

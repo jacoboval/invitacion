@@ -1,8 +1,6 @@
 package com.javasystems.invitacion.controller;
 
-import com.javasystems.invitacion.model.Invitado;
 import com.javasystems.invitacion.model.listaInvitados;
-import com.javasystems.invitacion.repository.listaInvitadosRepository;
 import com.javasystems.invitacion.service.listaInvitadosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +9,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
- @RequestMapping("/rsvp")
+ @RequestMapping("/admin")
+
 @CrossOrigin(origins = "*")
 public class listaInvitadosController {
 
     @Autowired
     private listaInvitadosService listaInvitadosService;
-    @Autowired
-    private listaInvitadosRepository listaInvitadosRepository;
+
+
+    //  crear invitado en la lista de invitados
+    @PostMapping
+    public ResponseEntity<listaInvitados> agregarAListadeInvitados(@RequestBody listaInvitados listaInvitados){
+        listaInvitados nuevo = listaInvitadosService.guardar(listaInvitados);
+        return  ResponseEntity.ok(nuevo);
+    }
+
 
     @GetMapping("/listarInvitados")
     public ResponseEntity<List<listaInvitados>>listarInvitados(){

@@ -1,6 +1,5 @@
 package com.javasystems.invitacion.service;
 
-import com.javasystems.invitacion.model.Invitado;
 import com.javasystems.invitacion.model.listaInvitados;
 import com.javasystems.invitacion.repository.listaInvitadosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,10 @@ public class listaInvitadosService {
     @Autowired
     private listaInvitadosRepository listaInvitadosRepository;
 
+
+    public listaInvitados guardar(listaInvitados listaInvitados){
+        return listaInvitadosRepository.save(listaInvitados);
+    }
     /*
     public listaInvitados guardar(listaInvitados listainvitados){
         return listaInvitadosRepository.save(listainvitados);

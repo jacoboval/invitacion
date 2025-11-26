@@ -1,7 +1,7 @@
 //  rellenar form con nombre y pases
 
 window.addEventListener("DOMContentLoaded",()=>{
-    const nombreInvitado = document.getElementById("nombre-invitado").innerText.trim();
+    const nombreInvitado = document.getElementById("data-listainvitado").innerText.trim();
     const pasesTexto = document.getElementById("pases-invitado").innerText.trim();
     const pases = pasesTexto.replace(/[^0-9]/g, ""); //  extrae solo numeros
     document.getElementById("nombre").value = nombreInvitado;
@@ -9,11 +9,11 @@ window.addEventListener("DOMContentLoaded",()=>{
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const invitadoDiv = document.getElementById("data-invitado");
+    const invitadoDiv = document.getElementById("data-listainvitado");
 
-    if (invitadoDiv) {
-        const nombre = invitadoDiv.dataset.nombre;
-        const acomp = invitadoDiv.dataset.acompanantes;
+    if (listaInvitadoDiv) {
+        const nombre = listaInvitadoDiv.dataset.nombre;
+        const acomp = listaInvitadoDiv.dataset.acompanantes;
 
         document.getElementById("nombre").value = nombre;
         document.getElementById("acompanantes").value = acomp;

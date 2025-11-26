@@ -1,8 +1,7 @@
 package com.javasystems.invitacion.controller;
 
-import com.javasystems.invitacion.model.Invitado;
-import com.javasystems.invitacion.repository.InvitadoRepository;
-import com.javasystems.invitacion.service.InvitadoService;
+import com.javasystems.invitacion.model.InvitadoConfirmado;
+import com.javasystems.invitacion.service.InvitadoConfirmadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,24 +9,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rsvp")
+//ic - invitados confirmados
+@RequestMapping("/ic")
 
 @CrossOrigin(origins = "*")
 
-public class InvitadoController {
+public class InvitadoConfirmadoController {
     @Autowired
     //private InvitadoRepository repositorio;
-    private InvitadoService invitadoService;
+    private InvitadoConfirmadoService invitadoService;
 
     @PostMapping
-    public ResponseEntity<Invitado> crearInvitado(@RequestBody Invitado invitado){
-        Invitado nuevo = invitadoService.guardar(invitado);
+    public ResponseEntity<InvitadoConfirmado> crearInvitado(@RequestBody InvitadoConfirmado invitado){
+        InvitadoConfirmado nuevo = invitadoService.guardar(invitado);
         return  ResponseEntity.ok(nuevo);
     }
 
     @GetMapping("/listar")
-    public ResponseEntity <List<Invitado>>Invitados() {
-        List<Invitado> invitados= invitadoService.listar();
+    public ResponseEntity <List<InvitadoConfirmado>>Invitados() {
+        List<InvitadoConfirmado> invitados= invitadoService.listar();
         return ResponseEntity.ok(invitados);
     }
 
@@ -43,11 +43,11 @@ public class InvitadoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Invitado> actualizarInvitado(
+    public ResponseEntity<InvitadoConfirmado> actualizarInvitado(
             @PathVariable Long id,
-            @RequestBody Invitado invitadoActualizado) {
+            @RequestBody InvitadoConfirmado invitadoActualizado) {
 
-        Invitado actualizado = invitadoService.actualizar(id, invitadoActualizado);
+        InvitadoConfirmado actualizado = invitadoService.actualizar(id, invitadoActualizado);
 
         if (actualizado == null) {
             return ResponseEntity.notFound().build();
