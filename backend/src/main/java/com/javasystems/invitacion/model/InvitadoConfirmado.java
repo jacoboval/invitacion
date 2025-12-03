@@ -2,8 +2,6 @@ package com.javasystems.invitacion.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 @Entity
 @Table(name = "invitadoconfirmado")
@@ -19,7 +17,28 @@ public class InvitadoConfirmado {
     private String asistencia;
     @Column(columnDefinition = "TEXT")
     private String mensaje;
-     private String tokenAcceso;
+
+    public String tokenAcceso;
+
+
+    public String getTokenAcceso() {
+        return tokenAcceso;
+    }
+
+    public void setTokenAcceso(String tokenAcceso) {
+        this.tokenAcceso = tokenAcceso;
+    }
+
+
+/*private boolean confirmado;
+
+    public boolean isConfirmado() {
+        return confirmado;
+    }
+
+    public void setConfirmado(boolean confirmado) {
+        this.confirmado = confirmado;
+    }*/
 
     public Long getId() {
         return id;
@@ -64,4 +83,18 @@ public class InvitadoConfirmado {
 
 
 
+/*
+    public String getTokenAcceso() {
+        return tokenAcceso;
+    }
+
+    public void setTokenAcceso(String tokenAcceso) {
+        this.tokenAcceso = tokenAcceso;
+    }
+*/
+   /* public boolean isConfirmado() {
+    }
+
+    public void setConfirmado(boolean b) {
+    }*/
 }

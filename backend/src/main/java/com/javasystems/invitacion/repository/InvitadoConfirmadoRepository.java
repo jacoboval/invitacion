@@ -7,8 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InvitadoConfirmadoRepository extends JpaRepository<InvitadoConfirmado,Long> {
-   /* InvitadoConfirmado findByTokenAcceso(String tokenAcceso);*/
-
-
+ /*   static InvitadoConfirmado findByTokenAcceso(String tokenAcceso) {
+        return null;
+    }
+*/
 
 }

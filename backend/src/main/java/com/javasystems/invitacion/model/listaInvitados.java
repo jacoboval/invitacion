@@ -15,17 +15,21 @@ public class listaInvitados {
     private String nombre;
     private String telefono;
     private Integer acompanantes;
+    public String tokenAcceso;
 
-    private String tokenAcceso;
-    private Boolean confirmado;
+    public boolean confirmado;
 
-    public Boolean getConfirmado() {
+    public boolean isConfirmado() {
         return confirmado;
     }
 
-    public void setConfirmado(Boolean confirmado) {
+    public void setConfirmado(boolean confirmado) {
         this.confirmado = confirmado;
     }
+    public boolean getConfirmado() {
+        return confirmado;
+    }
+
 
     public String getTokenAcceso() {
         return tokenAcceso;
@@ -34,6 +38,7 @@ public class listaInvitados {
     public void setTokenAcceso(String tokenAcceso) {
         this.tokenAcceso = tokenAcceso;
     }
+
 
 
     public String getTelefono() {
@@ -67,5 +72,7 @@ public class listaInvitados {
     public void setAcompanantes(Integer acompanantes) {
         this.acompanantes = acompanantes;
     }
+
+
 
 }
